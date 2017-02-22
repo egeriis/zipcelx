@@ -4,7 +4,12 @@
   "description": "JSON Transformer to create .xlsx files",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "jest",
+    "test:dev": "jest --watch"
+  },
+  "jest": {
+    "verbose": true,
+    "transform": {".js": "./node_modules/babel-jest"}
   },
   "repository": {
     "type": "git",
@@ -23,6 +28,7 @@
   "homepage": "https://github.com/dixieio/zipcelx#readme",
   "devDependencies": {
     "babel-core": "^6.23.1",
+    "babel-jest": "^19.0.0",
     "babel-loader": "^6.3.2",
     "babel-preset-es2015": "^6.22.0",
     "jest": "^19.0.1",
