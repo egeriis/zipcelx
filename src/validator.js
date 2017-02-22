@@ -1,10 +1,10 @@
-const childValidator = array => {
-	return array.reduce((bool, item) => {
-		return Array.isArray(item) && bool
-	}, true);
-}
+const childValidator = array => (
+	array.reduce((bool, item) => {
+		return Array.isArray(item) && bool;
+	}, true)
+);
 
-export const validator = data => {
+const validator = (data) => {
 	if (!Array.isArray(data)) {
 		return false;
 	}
@@ -14,4 +14,6 @@ export const validator = data => {
 	}
 
 	return true;
-}
+};
+
+export default validator;
