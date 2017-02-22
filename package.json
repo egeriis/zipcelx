@@ -1,0 +1,24 @@
+{
+  "name": "zipcelx",
+  "version": "1.0.0",
+  "description": "JSON Transformer to create .xlsx files",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dixieio/zipcelx.git"
+  },
+  "keywords": [
+    "JSON",
+    "Excel",
+    "xlsx"
+  ],
+  "author": "Lars Krieger",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dixieio/zipcelx/issues"
+  },
+  "homepage": "https://github.com/dixieio/zipcelx#readme"
+}
