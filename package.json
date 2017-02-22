@@ -5,11 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "test:dev": "jest --watch"
+    "test:dev": "jest --watch",
+    "lint": "eslint . ./"
   },
   "jest": {
     "verbose": true,
-    "transform": {".js": "./node_modules/babel-jest"}
+    "transform": {
+      ".js": "./node_modules/babel-jest"
+    }
   },
   "repository": {
     "type": "git",
@@ -28,9 +31,13 @@
   "homepage": "https://github.com/dixieio/zipcelx#readme",
   "devDependencies": {
     "babel-core": "^6.23.1",
+    "babel-eslint": "^7.1.1",
     "babel-jest": "^19.0.0",
     "babel-loader": "^6.3.2",
     "babel-preset-es2015": "^6.22.0",
+    "eslint": "^3.16.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
     "jest": "^19.0.1",
     "webpack": "^2.2.1"
   }
