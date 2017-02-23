@@ -1,5 +1,6 @@
 import assert from 'assert';
-import { generateXMLRows, generateXMLWorksheet } from '../src/zipcelx';
+import generatorRows from '../src/formatters/rows/generatorRows';
+import { generateXMLWorksheet } from '../src/zipcelx';
 
 const data = [
   [{
@@ -15,7 +16,7 @@ describe('XML Formatter', () => {
   const rowsXML = `<row r="1"><c r="A1" t="inlineStr"><is><t>Monkey</t></is></c><c r="B1"><v>1000</v></c></row>`;
 
   it('Should map row arrays to XML markup', () => {
-    assert.strictEqual(generateXMLRows(data), rowsXML);
+    assert.strictEqual(generatorRows(data), rowsXML);
   })
 
   it('Should generate and XML Worksheet from template', () => {
