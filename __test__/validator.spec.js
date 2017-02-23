@@ -10,7 +10,7 @@ const data = [
   }]
 ];
 
-describe('Data validator', () => {
+describe('Sheet Data validator', () => {
   it('Should ensure that Data passed is an Array', () => {
     expect(validator(data)).toBe(true);
   });
