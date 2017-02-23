@@ -7,7 +7,7 @@
     "test": "jest",
     "test:dev": "jest --watch",
     "lint": "eslint . ./",
-    "build": "babel ./src -d lib"
+    "build": "jest && eslint . ./ && babel ./src -d lib"
   },
   "jest": {
     "verbose": true,
