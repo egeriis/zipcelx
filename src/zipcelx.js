@@ -17,7 +17,7 @@ export const generateXMLWorksheet = (rows) => {
 
 export default (config) => {
   if (!validator(config.sheet.data)) {
-    console.error('Invalid data format, see \'linkToDocs\' for supported format.');
+    console.error('Invalid data format, see: https://github.com/dixieio/zipcelx/issues/1 for supported format.');
     return;
   }
 
@@ -33,6 +33,6 @@ export default (config) => {
 
   zip.generateAsync({ type: 'blob' })
     .then((blob) => {
-      FileSaver.saveAs(blob, config.filename);
+      FileSaver.saveAs(blob, `${config.filename}.xlsx`);
     });
 };
