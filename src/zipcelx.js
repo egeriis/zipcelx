@@ -15,7 +15,7 @@ export const generateXMLWorksheet = (rows) => {
   return templateSheet.replace('{placeholder}', XMLRows);
 };
 
-export const excelExport = (data, reportName) => {
+export default (data, reportName) => {
   if (!validator(data)) {
     console.error('Invalid data format, see \'linkToDocs\' for supported format.');
     return;
