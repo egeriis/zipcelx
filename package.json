@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "test:dev": "jest --watch",
-    "lint": "eslint . ./"
+    "lint": "eslint . ./",
+    "build": "babel ./src -d lib"
   },
   "jest": {
     "verbose": true,
