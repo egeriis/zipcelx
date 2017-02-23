@@ -4,7 +4,7 @@ const childValidator = array => (
   }, true)
 );
 
-const validator = (data) => {
+export default (data) => {
   if (!Array.isArray(data)) {
     return false;
   }
@@ -15,5 +15,3 @@ const validator = (data) => {
 
   return true;
 };
-
-export default validator;
