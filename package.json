@@ -2,7 +2,7 @@
   "name": "zipcelx",
   "version": "1.0.0",
   "description": "JSON Transformer to create .xlsx files",
-  "main": "index.js",
+  "main": "lib/zipcelx.js",
   "scripts": {
     "test": "jest",
     "test:dev": "jest --watch",
