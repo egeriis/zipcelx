@@ -4,12 +4,12 @@ const childValidator = array => (
   }, true)
 );
 
-export default (data) => {
-  if (!Array.isArray(data)) {
+export default (config) => {
+  if (!Array.isArray(config.sheet.data)) {
     return false;
   }
 
-  if (!childValidator(data)) {
+  if (!childValidator(config.sheet.data)) {
     return false;
   }
 
