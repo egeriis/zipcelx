@@ -2,9 +2,18 @@
   "name": "zipcelx",
   "version": "1.0.0",
   "description": "JSON Transformer to create .xlsx files",
-  "main": "index.js",
+  "main": "lib/zipcelx.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "jest",
+    "test:dev": "jest --watch",
+    "lint": "eslint . ./",
+    "build": "jest && eslint . ./ && babel ./src -d lib"
+  },
+  "jest": {
+    "verbose": true,
+    "transform": {
+      ".js": "./node_modules/babel-jest"
+    }
   },
   "repository": {
     "type": "git",
@@ -20,5 +29,20 @@
   "bugs": {
     "url": "https://github.com/dixieio/zipcelx/issues"
   },
-  "homepage": "https://github.com/dixieio/zipcelx#readme"
+  "homepage": "https://github.com/dixieio/zipcelx#readme",
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-eslint": "^7.1.1",
+    "babel-jest": "^19.0.0",
+    "babel-preset-es2015": "^6.22.0",
+    "eslint": "^3.16.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "jest": "^19.0.1"
+  },
+  "dependencies": {
+    "file-saver": "^1.3.3",
+    "jszip": "^3.1.3",
+    "lodash.escape": "^4.0.1"
+  }
 }
