@@ -15,8 +15,8 @@ export const generateXMLWorksheet = (rows) => {
   return templateSheet.replace('{placeholder}', XMLRows);
 };
 
-export default (data, reportName) => {
-  if (!validator(data)) {
+export default (config) => {
+  if (!validator(config.sheet.data)) {
     console.error('Invalid data format, see \'linkToDocs\' for supported format.');
     return;
   }
@@ -28,11 +28,11 @@ export default (data, reportName) => {
   zip.file('_rels/.rels', rels);
   zip.file('[Content_Types].xml', contentTypes);
 
-  const worksheet = generateXMLWorksheet(data);
+  const worksheet = generateXMLWorksheet(config.sheet.data);
   xl.file('worksheets/sheet1.xml', worksheet);
 
   zip.generateAsync({ type: 'blob' })
     .then((blob) => {
-      FileSaver.saveAs(blob, reportName);
+      FileSaver.saveAs(blob, config.filename);
     });
 };
