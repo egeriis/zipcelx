@@ -53,6 +53,11 @@ describe('Validator', () => {
   });
 
   describe('Sheet data', () => {
+    it('Should ensure that sheet data key is an array', () => {
+      let config = Object.assign({}, baseConfig, { sheet: { data: { test: 'test'} } });
+      expect(validator(config).error).toEqual('Zipcelx sheet data is not of type array');
+    });
+
     it('Should ensure each of the childs is an array', () => {
       let config = Object.assign({}, baseConfig, { sheet: { data: [{test: 'demo'}] } });
       expect(validator(config).error).toEqual('Zipclex sheet data childs is not of type array');

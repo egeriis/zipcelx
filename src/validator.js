@@ -17,6 +17,12 @@ export default (config) => {
     };
   }
 
+  if (!Array.isArray(config.sheet.data)) {
+    return {
+      error: 'Zipcelx sheet data is not of type array'
+    }
+  }
+
   if (!childValidator(config.sheet.data)) {
     return {
       error: 'Zipclex sheet data childs is not of type array'
