@@ -1,8 +1,8 @@
-const childValidator = array => (
-  array.reduce((bool, item) => {
-    return Array.isArray(item) && bool;
-  }, true)
-);
+const childValidator = array => {
+  return array.every(item => {
+    return Array.isArray(item)
+  });
+};
 
 export default (config) => {
   if (!config.filename) {
@@ -14,7 +14,13 @@ export default (config) => {
   if (typeof config.filename !== 'string') {
     return {
       error: 'Zipclex filename can only be of type string'
-    }
+    };
+  }
+
+  if (!childValidator(config.sheet.data)) {
+    return {
+      error: 'Zipclex sheet data childs is not of type array'
+    };
   }
 
   return true;
