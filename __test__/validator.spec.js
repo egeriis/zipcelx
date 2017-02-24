@@ -38,4 +38,16 @@ describe('Validator', () => {
     config.filename = 1234
     expect(validator(config)).toEqual(errorObjectDescription)
   });
+
+  describe('Filename Validator', () => {
+    it('Should be a property of the config', () => {
+      delete config.filename;
+      expect(validator(config).error).toEqual('Zipclex config missing propery filename');
+    });
+
+    it('Should be of type string', () => {
+      config.filename = 1234
+      expect(validator(config).error).toEqual('Zipclex filename can only be of type string');
+    });
+  });
 });
