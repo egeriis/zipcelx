@@ -5,12 +5,16 @@ const childValidator = array => (
 );
 
 export default (config) => {
-  if (!Array.isArray(config.sheet.data)) {
-    return false;
+  if (!config.filename) {
+    return {
+      error: 'Zipclex config missing propery filename'
+    };
   }
 
-  if (!childValidator(config.sheet.data)) {
-    return false;
+  if (typeof config.filename !== 'string') {
+    return {
+      error: 'Zipclex filename can only be of type string'
+    }
   }
 
   return true;

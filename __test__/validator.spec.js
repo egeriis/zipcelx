@@ -15,11 +15,27 @@ const config = {
   }
 };
 
-describe('Sheet Data validator', () => {
-  it('Should ensure that Data passed is an Array', () => {
+const configDescription = expect.objectContaining({
+  filename: expect.any(String),
+  sheet: expect.objectContaining({
+    data: expect.arrayContaining(config.sheet.data)
+  })
+});
+const errorObjectDescription = expect.objectContaining({
+  error: expect.any(String),
+});
+
+describe('Validator', () => {
+  it('Should ensure that being called with correct config', () => {
+    expect(config).toEqual(configDescription);
+  });
+
+  it('If validation is successfull return true', () => {
     expect(validator(config)).toBe(true);
   });
-  it('Should ensure that argument Data\'s childs is arrays', () => {
-    expect(validator(config)).toBe(true);
+
+  it('If validation fails it should return object containg key error', () => {
+    config.filename = 1234
+    expect(validator(config)).toEqual(errorObjectDescription)
   });
 });
