@@ -1,3 +1,10 @@
+import {
+  MISSING_KEY_FILENAME,
+  INVALID_TYPE_FILENAME,
+  INVALID_TYPE_SHEET,
+  INVALID_TYPE_SHEET_DATA
+} from './commons/constants';
+
 const childValidator = array => {
   return array.every(item => {
     return Array.isArray(item)
@@ -7,25 +14,25 @@ const childValidator = array => {
 export default (config) => {
   if (!config.filename) {
     return {
-      error: 'Zipclex config missing propery filename'
+      error: MISSING_KEY_FILENAME
     };
   }
 
   if (typeof config.filename !== 'string') {
     return {
-      error: 'Zipclex filename can only be of type string'
+      error: INVALID_TYPE_FILENAME
     };
   }
 
   if (!Array.isArray(config.sheet.data)) {
     return {
-      error: 'Zipcelx sheet data is not of type array'
+      error: INVALID_TYPE_SHEET
     }
   }
 
   if (!childValidator(config.sheet.data)) {
     return {
-      error: 'Zipclex sheet data childs is not of type array'
+      error: INVALID_TYPE_SHEET_DATA
     };
   }
 
