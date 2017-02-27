@@ -19,7 +19,7 @@ const baseConfig = {
   }
 };
 
-describe('XML Formatter', () => {
+describe('Zipcelx', () => {
   const rowsXML = `<row r="1"><c r="A1" t="inlineStr"><is><t>Monkey</t></is></c><c r="B1"><v>1000</v></c></row>`;
 
   it('Should console log error if validator fails', () => {
