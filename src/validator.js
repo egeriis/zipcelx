@@ -13,27 +13,23 @@ const childValidator = array => {
 
 export default (config) => {
   if (!config.filename) {
-    return {
-      error: MISSING_KEY_FILENAME
-    };
+    console.error(MISSING_KEY_FILENAME)
+    return false;
   }
 
   if (typeof config.filename !== 'string') {
-    return {
-      error: INVALID_TYPE_FILENAME
-    };
+    console.error(INVALID_TYPE_FILENAME);
+    return false;
   }
 
   if (!Array.isArray(config.sheet.data)) {
-    return {
-      error: INVALID_TYPE_SHEET
-    }
+    console.error(INVALID_TYPE_SHEET);
+    return false;
   }
 
   if (!childValidator(config.sheet.data)) {
-    return {
-      error: INVALID_TYPE_SHEET_DATA
-    };
+    console.error(INVALID_TYPE_SHEET_DATA);
+    return false;
   }
 
   return true;
