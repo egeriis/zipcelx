@@ -1,6 +1,5 @@
 import generatorRows from '../src/formatters/rows/generatorRows';
 import zipcelx, { generateXMLWorksheet } from '../src/zipcelx';
-import { ERROR_INVALID_CONFIG } from '../src/commons/constants';
 import baseConfig from './baseConfig';
 
 console.error = jest.genMockFn();
