@@ -1,7 +1,6 @@
 import JSZip from 'jszip';
 import FileSaver from 'file-saver';
 
-import ERROR_INVALID_CONFIG from './commons/constants';
 import validator from './validator';
 import generatorRows from './formatters/rows/generatorRows';
 

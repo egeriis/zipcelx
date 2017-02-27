@@ -5,15 +5,13 @@ import {
   INVALID_TYPE_SHEET_DATA
 } from './commons/constants';
 
-const childValidator = array => {
-  return array.every(item => {
-    return Array.isArray(item)
-  });
+const childValidator = (array) => {
+  return array.every(item => Array.isArray(item));
 };
 
 export default (config) => {
   if (!config.filename) {
-    console.error(MISSING_KEY_FILENAME)
+    console.error(MISSING_KEY_FILENAME);
     return false;
   }
 
