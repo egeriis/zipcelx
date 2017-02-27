@@ -1,6 +1,7 @@
 import JSZip from 'jszip';
 import FileSaver from 'file-saver';
 
+import ERROR_INVALID_CONFIG from './commons/constants';
 import validator from './validator';
 import generatorRows from './formatters/rows/generatorRows';
 
@@ -17,7 +18,6 @@ export const generateXMLWorksheet = (rows) => {
 
 export default (config) => {
   if (!validator(config.sheet.data)) {
-    console.error('Invalid data format, see: https://github.com/dixieio/zipcelx/issues/1 for supported format.');
     return;
   }
 
