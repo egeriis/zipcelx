@@ -5,21 +5,7 @@ import {
   INVALID_TYPE_SHEET,
   INVALID_TYPE_SHEET_DATA
 } from '../src/commons/constants';
-
-const baseConfig = {
-  filename: 'report',
-  sheet: {
-    data: [
-      [{
-        value: 'Monkey',
-        type: 'string'
-      }, {
-        value: 1000,
-        type: 'number'
-      }]
-    ]
-  }
-};
+import baseConfig from './baseConfig';
 
 const configDescription = expect.objectContaining({
   filename: expect.any(String),

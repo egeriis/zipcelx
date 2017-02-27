@@ -1,26 +1,12 @@
 import generatorRows from '../src/formatters/rows/generatorRows';
 import zipcelx, { generateXMLWorksheet } from '../src/zipcelx';
 import { ERROR_INVALID_CONFIG } from '../src/commons/constants';
+import baseConfig from './baseConfig';
 
 console.error = jest.genMockFn();
 
-const baseConfig = {
-  filename: 'report',
-  sheet: {
-    data: [
-      [{
-        value: 'Monkey',
-        type: 'string'
-      }, {
-        value: 1000,
-        type: 'number'
-      }]
-    ]
-  }
-};
-
 describe('Zipcelx', () => {
-  const rowsXML = `<row r="1"><c r="A1" t="inlineStr"><is><t>Monkey</t></is></c><c r="B1"><v>1000</v></c></row>`;
+  const rowsXML = `<row r="1"><c r="A1" t="inlineStr"><is><t>Test</t></is></c><c r="B1"><v>1000</v></c></row>`;
 
   it('Should console log error if validator fails', () => {
     let config = Object.assign({}, baseConfig, { sheet: { data: [{test: 'demo'}] } });

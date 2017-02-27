@@ -1,15 +1,10 @@
 import { WARNING_INVALID_TYPE } from '../../../src/commons/constants';
 import formatCell from '../../../src/formatters/cells/formatCell';
+import baseConfig from '../../baseConfig';
+
+const cells = baseConfig.sheet.data[0];
 
 console.warn = jest.genMockFn();
-
-const cells = [{
-  value: 'Test',
-  type: 'string'
-}, {
-  value: 1000,
-  type: 'number'
-}];
 
 describe('Format Cell', () => {
   describe('Create a cell of type sting', () => {
