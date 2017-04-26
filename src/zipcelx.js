@@ -16,7 +16,7 @@ export const generateXMLWorksheet = (rows) => {
 };
 
 export default (config) => {
-  if (!validator(config.sheet.data)) {
+  if (!validator(config)) {
     return;
   }
 
