@@ -7,10 +7,9 @@ console.error = jest.genMockFn();
 describe('Zipcelx', () => {
   const rowsXML = `<row r="1"><c r="A1" t="inlineStr"><is><t>Test</t></is></c><c r="B1"><v>1000</v></c></row>`;
 
-  it('Should console log error if validator fails', () => {
+  it('Should throw error if validator fails', () => {
     let config = Object.assign({}, baseConfig, { sheet: { data: [{test: 'demo'}] } });
-    zipcelx(config);
-    expect(console.error).toBeCalled();
+    expect(() => zipcelx(config)).toThrow();
   });
 
   it('Should map row arrays to XML markup', () => {
