@@ -1,7 +1,7 @@
 # zipcelx
 _Lightweight in browser `.xlsx` exporter._
 
-# Tabel of content
+# Table of contents
 1. [How to use](https://github.com/dixieio/zipcelx/wiki/How-to-use)
 2. [The config object](https://github.com/dixieio/zipcelx/wiki/The-config-object)
 3. [Contributing](https://github.com/dixieio/zipcelx/wiki/Contributing)
