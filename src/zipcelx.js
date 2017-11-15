@@ -17,7 +17,7 @@ export const generateXMLWorksheet = (rows) => {
 
 export default (config) => {
   if (!validator(config)) {
-    return;
+    throw new Error('Validation failed.');
   }
 
   const zip = new JSZip();
@@ -30,7 +30,7 @@ export default (config) => {
   const worksheet = generateXMLWorksheet(config.sheet.data);
   xl.file('worksheets/sheet1.xml', worksheet);
 
-  zip.generateAsync({ type: 'blob' })
+  return zip.generateAsync({ type: 'blob' })
     .then((blob) => {
       FileSaver.saveAs(blob, `${config.filename}.xlsx`);
     });
