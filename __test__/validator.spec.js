@@ -37,7 +37,7 @@ describe('Validator', () => {
     it('Should be a property of the config', () => {
       let config = Object.assign({}, config);
       delete config.filename;
-      expect(() => validator(config)).toThrow();
+      expect(() => validator(config)).toThrow(MISSING_KEY_FILENAME);
     });
   });
 
