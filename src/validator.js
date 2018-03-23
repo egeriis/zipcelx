@@ -4,6 +4,7 @@ import {
   INVALID_TYPE_SHEET,
   INVALID_TYPE_SHEET_DATA
 } from './commons/constants';
+import ErrorHandler from './commons/ErrorHandler';
 
 const childValidator = (array) => {
   return array.every(item => Array.isArray(item));
@@ -11,13 +12,13 @@ const childValidator = (array) => {
 
 export default (config) => {
   if (!config.filename) {
-    throw MISSING_KEY_FILENAME;
+    throw new ErrorHandler(MISSING_KEY_FILENAME, 'filename');
   } else if (typeof config.filename !== 'string') {
-    throw INVALID_TYPE_FILENAME;
+    throw new ErrorHandler(INVALID_TYPE_FILENAME, 'filename');
   } else if (!Array.isArray(config.sheet.data)) {
-    throw INVALID_TYPE_SHEET;
+    throw new ErrorHandler(INVALID_TYPE_SHEET, 'sheet');
   } else if (!childValidator(config.sheet.data)) {
-    throw INVALID_TYPE_SHEET_DATA;
+    throw new ErrorHandler(INVALID_TYPE_SHEET_DATA, 'sheet');
   }
 
   return true;
