@@ -30,7 +30,7 @@ export const generate = (config) => {
   const worksheet = generateXMLWorksheet(config.sheet.data);
   xl.file('worksheets/sheet1.xml', worksheet);
 
-  return zip.generateAsync({ type: 'blob' })
+  return zip.generateAsync({ type: 'blob', mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
 };
 
 export default (config) => {

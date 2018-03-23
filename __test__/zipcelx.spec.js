@@ -1,5 +1,5 @@
 import generatorRows from '../src/formatters/rows/generatorRows';
-import zipcelx, { generateXMLWorksheet } from '../src/zipcelx';
+import zipcelx, { generateXMLWorksheet, generate } from '../src/zipcelx';
 import baseConfig from './baseConfig';
 
 console.error = jest.genMockFn();
@@ -22,5 +22,10 @@ describe('Zipcelx', () => {
       `<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:mx="http://schemas.microsoft.com/office/mac/excel/2008/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:x14="http://schemas.microsoft.com/office/spreadsheetml/2009/9/main" xmlns:x14ac="http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac" xmlns:xm="http://schemas.microsoft.com/office/excel/2006/main"><sheetData>${rowsXML}</sheetData></worksheet>`
     ].join('\n');
     expect(generateXMLWorksheet(baseConfig.sheet.data)).toBe(expectedXML);
+  });
+
+  it('Should generate with correct mimetype', async () => {
+    let blob = await generate(baseConfig);
+    expect(blob.type).toBe('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
   });
 });
