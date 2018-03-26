@@ -4,8 +4,8 @@
 
 export default {
   filename: 'report',
-  sheet: {
-    data: [
+  sheets: {
+    body: [
       [{
         value: 'Test',
         type: 'string'

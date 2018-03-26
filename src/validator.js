@@ -20,12 +20,12 @@ export default (config) => {
     return false;
   }
 
-  if (!Array.isArray(config.sheet.data)) {
+  if (!Array.isArray(config.sheets.body)) {
     console.error(INVALID_TYPE_SHEET);
     return false;
   }
 
-  if (!childValidator(config.sheet.data)) {
+  if (!childValidator(config.sheets.body)) {
     console.error(INVALID_TYPE_SHEET_DATA);
     return false;
   }
