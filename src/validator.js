@@ -1,13 +1,9 @@
 import {
   MISSING_KEY_FILENAME,
+  MISSING_KEY_TITLE,
   INVALID_TYPE_FILENAME,
-  INVALID_TYPE_SHEET,
-  INVALID_TYPE_SHEET_DATA
+  INVALID_TYPE_SHEET
 } from './commons/constants';
-
-const childValidator = (array) => {
-  return array.every(item => Array.isArray(item));
-};
 
 export default (config) => {
   if (!config.filename) {
@@ -20,14 +16,11 @@ export default (config) => {
     return false;
   }
 
-  if (!Array.isArray(config.sheet.data)) {
-    console.error(INVALID_TYPE_SHEET);
-    return false;
-  }
-
-  if (!childValidator(config.sheet.data)) {
-    console.error(INVALID_TYPE_SHEET_DATA);
-    return false;
+  for (let i = 0; i < config.sheets.length; i++) {
+    if (!Array.isArray(config.sheets[i].data)) {
+      console.error(INVALID_TYPE_SHEET);
+      return false;
+    }
   }
 
   return true;
