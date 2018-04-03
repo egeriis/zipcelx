@@ -4,15 +4,10 @@
 
 export default {
   filename: 'report',
-  sheet: {
-    data: [
-      [{
-        value: 'Test',
-        type: 'string'
-      }, {
-        value: 1000,
-        type: 'number'
-      }]
-    ]
-  }
+  sheets: [
+    {
+      title: 'Test',
+      data: [[{ value: 'Test', type: 'string' }, { value: 1000, type: 'number' }]]
+    }
+  ]
 };

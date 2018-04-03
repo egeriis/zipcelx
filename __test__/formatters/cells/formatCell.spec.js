@@ -2,7 +2,7 @@ import { WARNING_INVALID_TYPE } from '../../../src/commons/constants';
 import formatCell from '../../../src/formatters/cells/formatCell';
 import baseConfig from '../../baseConfig';
 
-const cells = baseConfig.sheet.data[0];
+const cells = baseConfig.sheets[0].data[0];
 
 console.warn = jest.genMockFn();
 
@@ -27,5 +27,5 @@ describe('Format Cell', () => {
     it('Create cell', () => {
       expect(formatCell(cells[1], 1, 1)).toBe(expectedXML);
     });
-  });
+ });
 });

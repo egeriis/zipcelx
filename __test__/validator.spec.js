@@ -9,9 +9,7 @@ import baseConfig from './baseConfig';
 
 const configDescription = expect.objectContaining({
   filename: expect.any(String),
-  sheet: expect.objectContaining({
-    data: expect.arrayContaining(baseConfig.sheet.data)
-  })
+  sheets: expect.arrayContaining(baseConfig.sheets),
 });
 const errorObjectDescription = expect.objectContaining({
   error: expect.any(String),
@@ -29,7 +27,7 @@ describe('Validator', () => {
   });
 
   it('If validation fails it should call console.error', () => {
-    let config = Object.assign({}, baseConfig, {filename: 1234});
+    let config = Object.assign({}, baseConfig, { filename: 1234 });
     validator(config)
     expect(console.error).toBeCalled();
   });
@@ -45,15 +43,9 @@ describe('Validator', () => {
 
   describe('Sheet data', () => {
     it('Should ensure that sheet data key is an array', () => {
-      let config = Object.assign({}, baseConfig, { sheet: { data: { test: 'test'} } });
+      let config = Object.assign({}, baseConfig, { sheets: [{ data: 'test'}] });
       expect(validator(config)).toBe(false);
       expect(console.error).toBeCalledWith(INVALID_TYPE_SHEET);
-    });
-
-    it('Should ensure each of the childs is an array', () => {
-      let config = Object.assign({}, baseConfig, { sheet: { data: [{test: 'demo'}] } });
-      expect(validator(config)).toBe(false);
-      expect(console.error).toBeCalledWith(INVALID_TYPE_SHEET_DATA);
     });
   })
 });
