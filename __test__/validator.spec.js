@@ -1,9 +1,10 @@
 import validator from '../src/validator';
 import {
+  MISSING_KEY_TITLE,
   MISSING_KEY_FILENAME,
   INVALID_TYPE_FILENAME,
   INVALID_TYPE_SHEET,
-  INVALID_TYPE_SHEET_DATA
+  INVALID_TYPE_TITLE
 } from '../src/commons/constants';
 import baseConfig from './baseConfig';
 
@@ -41,11 +42,26 @@ describe('Validator', () => {
     });
   });
 
+  describe('Sheet title', () => {
+    it('Should ensure that sheet title is not missing', () => {
+      let config = Object.assign({}, baseConfig);
+      delete config.sheets[0].title;
+      expect(validator(baseConfig)).toBe(false);
+      expect(console.error).toBeCalledWith(MISSING_KEY_TITLE);
+    });
+
+    it('Should ensure title sheet title has the type of a sting', () => {
+      let config = Object.assign({}, baseConfig, { sheets: [{ title: 1234 }] });
+      expect(validator(config)).toBe(false);
+      expect(console.error).toBeCalledWith(INVALID_TYPE_TITLE);
+    });
+  });
+
   describe('Sheet data', () => {
     it('Should ensure that sheet data key is an array', () => {
-      let config = Object.assign({}, baseConfig, { sheets: [{ data: 'test'}] });
+      let config = Object.assign({}, baseConfig, { sheets: [{ title: 'test', data: 'test'}] });
       expect(validator(config)).toBe(false);
-      expect(console.error).toBeCalledWith(INVALID_TYPE_SHEET);
+      expect(console.error).toBeCalledWith(INVALID_TYPE_TITLE);
     });
   })
 });

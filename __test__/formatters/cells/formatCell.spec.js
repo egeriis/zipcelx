@@ -27,5 +27,5 @@ describe('Format Cell', () => {
     it('Create cell', () => {
       expect(formatCell(cells[1], 1, 1)).toBe(expectedXML);
     });
- });
+  });
 });
