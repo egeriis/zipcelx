@@ -8,7 +8,8 @@
     "test": "jest",
     "test:dev": "jest --watch",
     "lint": "eslint . ./",
-    "build": "jest && eslint . ./ && rimraf lib/* && rollup -c"
+    "ci": "yarn run test && yarn run lint",
+    "build": "yarn run ci && rimraf lib/* && rollup -c"
   },
   "jest": {
     "verbose": true,
