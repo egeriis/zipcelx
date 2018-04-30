@@ -1,6 +1,6 @@
 {
   "name": "zipcelx",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "JSON Transformer to create .xlsx files",
   "main": "lib/bundle.js",
   "browser": "lib/standalone.js",
@@ -9,7 +9,8 @@
     "test": "jest",
     "test:dev": "jest --watch",
     "lint": "eslint . ./",
-    "build": "jest && eslint . ./ && rollup -c"
+    "ci": "yarn run test && yarn run lint",
+    "build": "yarn run ci && rollup -c"
   },
   "jest": {
     "verbose": true,
