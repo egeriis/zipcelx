@@ -9,7 +9,8 @@
     "test": "jest",
     "test:dev": "jest --watch",
     "lint": "eslint . ./",
-    "build": "jest && eslint . ./ && rollup -c"
+    "ci": "yarn run test && yarn run lint",
+    "build": "yarn run ci && rollup -c"
   },
   "jest": {
     "verbose": true,
