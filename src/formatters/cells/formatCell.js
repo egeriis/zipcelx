@@ -3,13 +3,15 @@ import generatorStringCell from './generatorStringCell';
 import generatorNumberCell from './generatorNumberCell';
 
 export default (cell, index, rowIndex) => {
-  if (validTypes.indexOf(cell.type) === -1) {
+  let cellType = cell.type;
+
+  if (validTypes.indexOf(cellType) === -1) {
     console.warn(WARNING_INVALID_TYPE);
-    cell.type = CELL_TYPE_STRING;
+    cellType = CELL_TYPE_STRING;
   }
 
   return (
-    cell.type === CELL_TYPE_STRING
+    cellType === CELL_TYPE_STRING
     ? generatorStringCell(index, cell.value, rowIndex)
     : generatorNumberCell(index, cell.value, rowIndex)
   );

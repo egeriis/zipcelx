@@ -5,6 +5,6 @@ const expectedXML = '<row r="1"><c r="A1" t="inlineStr"><is><t>Test</t></is></c>
 
 describe('Format Row', () => {
   it('Should create one row from given data', () => {
-    expect(formatRow(baseConfig.sheet.data[0], 0)).toBe(expectedXML);
+    expect(formatRow(baseConfig.sheets[0].data[0], 0)).toBe(expectedXML);
   });
 });
