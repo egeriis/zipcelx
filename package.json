@@ -2,14 +2,13 @@
   "name": "zipcelx",
   "version": "1.4.0",
   "description": "JSON Transformer to create .xlsx files",
-  "main": "lib/bundle.js",
-  "browser": "lib/standalone.js",
-  "module": "lib/module.js",
+  "browser": "lib/module.js",
+  "standalone-build": "lib/standalone.js",
   "scripts": {
     "test": "jest",
     "test:dev": "jest --watch",
     "lint": "eslint . ./",
-    "build": "jest && eslint . ./ && rollup -c"
+    "build": "jest && eslint . ./ && rimraf lib/* && rollup -c"
   },
   "jest": {
     "verbose": true,
@@ -41,6 +40,7 @@
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "jest": "^22.4.2",
+    "rimraf": "^2.6.2",
     "rollup": "^0.56.4",
     "rollup-plugin-commonjs": "^8.4.0",
     "rollup-plugin-node-builtins": "^2.1.2",
