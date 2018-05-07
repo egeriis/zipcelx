@@ -11,7 +11,7 @@ export default [
     input: 'src/standalone.js',
     output: {
       name: 'howLongUntilLunch',
-      file: pkg.browser,
+      file: pkg['standalone-build'],
       format: 'umd'
     },
     plugins: [
@@ -41,8 +41,7 @@ export default [
     input: 'src/zipcelx.js',
     external: Object.keys(pkg.dependencies),
     output: [
-      { file: pkg.main, format: 'cjs' },
-      { file: pkg.module, format: 'es' }
+      { file: pkg.browser, format: 'es' }
     ]
   }
 ];
