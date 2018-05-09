@@ -1,7 +1,8 @@
 {
   "name": "zipcelx",
-  "version": "1.4.0",
+  "version": "1.4.2",
   "description": "JSON Transformer to create .xlsx files",
+  "main": "lib/module.js",
   "browser": "lib/module.js",
   "standalone-build": "lib/standalone.js",
   "scripts": {
