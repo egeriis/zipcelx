@@ -1,11 +1,7 @@
-class ErrorHandler extends Error {
-  constructor(message, prop) {
-    super(message);
-    Error.captureStackTrace(this, this.constructor);
-    this.name = this.constructor.name;
-    this.prop = prop;
-    this.message = message;
-  }
+function ErrorHandler(message) {
+  this.name = 'Error';
+  this.message = message;
+  this.stack = (new Error()).stack;
 }
 
 export default ErrorHandler;
