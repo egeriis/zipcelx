@@ -31,7 +31,7 @@ export default [
       }),
       globals(),
       builtins(),
-      uglify()
+      uglify(),
     ]
   },
 
@@ -46,6 +46,11 @@ export default [
     external: Object.keys(pkg.dependencies),
     output: [
       { file: pkg.browser, format: 'es' }
+    ],
+    plugins: [
+      babel({
+          exclude: 'node_modules/**'
+      }),
     ]
   }
 ];
