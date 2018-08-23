@@ -1,4 +1,5 @@
 import commonjs from 'rollup-plugin-commonjs';
+import babel from 'rollup-plugin-babel';
 import builtins from 'rollup-plugin-node-builtins';
 import globals from 'rollup-plugin-node-globals';
 import resolve from 'rollup-plugin-node-resolve';
@@ -24,6 +25,9 @@ export default [
           'node_modules/rollup-plugin-node-globals/**',
           'node_modules/rollup-plugin-node-builtins/**'
         ]
+      }),
+      babel({
+        exclude: 'node_modules/**'
       }),
       globals(),
       builtins(),
