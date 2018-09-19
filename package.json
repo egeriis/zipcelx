@@ -14,7 +14,6 @@
   },
   "jest": {
     "verbose": true,
-    "testURL": "http://localhost/",
     "transform": {
       ".js": "./node_modules/babel-jest"
     }
