@@ -10,10 +10,11 @@
     "test:dev": "jest --watch",
     "lint": "eslint . ./",
     "ci": "yarn run test && yarn run lint",
-    "build": "yarn run ci && rimraf lib/* && rollup -c"
+    "build": "npm run ci && rimraf lib/* && rollup -c"
   },
   "jest": {
     "verbose": true,
+    "testURL": "http://localhost/",
     "transform": {
       ".js": "./node_modules/babel-jest"
     }
