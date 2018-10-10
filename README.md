@@ -1,7 +1,7 @@
 zipcelx
 =======
 
-Lightweight JSON to xlsx creation in browser
+Generate XLSX files in the browser, with minimal footprint. The vision is to provide the smallest possible package for generating valid XLSX files in the browser.
 
 ## Table of contents
 1. [How to use](https://github.com/dixieio/zipcelx/wiki/How-to-use)
