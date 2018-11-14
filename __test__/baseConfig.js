@@ -13,6 +13,11 @@ export default {
         value: 1000,
         type: 'number'
       }]
-    ]
+    ],
+    cols: [{
+      width: 150
+    }, {
+      width: 60
+    }]
   }
 };

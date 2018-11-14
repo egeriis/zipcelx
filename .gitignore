@@ -1,6 +1,9 @@
 # Mac dumb DS_Store
 .DS_Store
 
+# Webstorm IDE
+.idea
+
 # Logs
 logs
 *.log
