@@ -41,7 +41,17 @@ export default [
     input: 'src/zipcelx.js',
     external: Object.keys(pkg.dependencies),
     output: [
-      { file: pkg.browser, format: 'es' }
+      { file: pkg.main, format: 'cjs' }
+    ],
+    plugins: [
+      uglify()
+    ]
+  },
+  {
+    input: 'src/zipcelx.js',
+    external: Object.keys(pkg.dependencies),
+    output: [
+      { file: pkg.module, format: 'es' }
     ]
   }
 ];
