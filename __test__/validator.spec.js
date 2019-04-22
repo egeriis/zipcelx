@@ -6,6 +6,7 @@ import {
   INVALID_TYPE_SHEET_DATA
 } from '../src/commons/constants';
 import baseConfig from './baseConfig';
+import multiSheetConfig from './multiSheetConfig';
 
 const configDescription = expect.objectContaining({
   filename: expect.any(String),
@@ -13,6 +14,18 @@ const configDescription = expect.objectContaining({
     data: expect.arrayContaining(baseConfig.sheet.data)
   })
 });
+
+const multiSheetConfigDescription = expect.objectContaining({
+  filename: expect.any(String),
+  sheets: expect.arrayContaining([
+    expect.objectContaining(
+      {
+        sheetName: expect.any(String),
+        data: expect.arrayContaining(baseConfig.sheet.data)
+      })
+  ])
+});
+
 const errorObjectDescription = expect.objectContaining({
   error: expect.any(String),
 });
@@ -24,8 +37,16 @@ describe('Validator', () => {
     expect(baseConfig).toEqual(configDescription);
   });
 
+  it('Should ensure that being called with correct multisheet config', () => {
+    expect(multiSheetConfig).toEqual(multiSheetConfigDescription);
+  });
+
   it('If validation is successfull return true', () => {
     expect(validator(baseConfig)).toBe(true);
+  });
+
+  it('If multi sheet validation is successfull return true', () => {
+    expect(validator(multiSheetConfig)).toBe(true);
   });
 
   it('If validation fails it should call console.error', () => {
