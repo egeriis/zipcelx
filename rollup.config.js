@@ -1,9 +1,18 @@
+import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import builtins from 'rollup-plugin-node-builtins';
 import globals from 'rollup-plugin-node-globals';
 import resolve from 'rollup-plugin-node-resolve';
 import uglify from 'rollup-plugin-uglify';
 import pkg from './package.json';
+
+function instantiateBabelPlugin() {
+  return babel({
+    babelrc: false,
+    exclude: 'node_modules/**',
+    presets: [['env', { modules: false }]]
+  });
+}
 
 export default [
   // browser-friendly UMD build
@@ -27,6 +36,7 @@ export default [
       }),
       globals(),
       builtins(),
+      instantiateBabelPlugin(),
       uglify()
     ]
   },
@@ -44,6 +54,7 @@ export default [
       { file: pkg.main, format: 'cjs' }
     ],
     plugins: [
+      instantiateBabelPlugin(),
       uglify()
     ]
   },
@@ -52,6 +63,9 @@ export default [
     external: Object.keys(pkg.dependencies),
     output: [
       { file: pkg.module, format: 'es' }
+    ],
+    plugins: [
+      instantiateBabelPlugin()
     ]
   }
 ];
