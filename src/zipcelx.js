@@ -10,12 +10,12 @@ import rels from './statics/rels';
 import contentTypes from './statics/[Content_Types].xml';
 import templateSheet from './templates/worksheet.xml';
 
-export const generateXMLWorksheet = (rows) => {
+export const generateXMLWorksheet = rows => {
   const XMLRows = generatorRows(rows);
   return templateSheet.replace('{placeholder}', XMLRows);
 };
 
-export default (config) => {
+export default config => {
   if (!validator(config)) {
     throw new Error('Validation failed.');
   }
@@ -30,11 +30,14 @@ export default (config) => {
   const worksheet = generateXMLWorksheet(config.sheet.data);
   xl.file('worksheets/sheet1.xml', worksheet);
 
-  return zip.generateAsync({
-    type: 'blob',
-    mimeType:
-      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-  }).then((blob) => {
-    FileSaver.saveAs(blob, `${config.filename}.xlsx`);
-  });
+  return zip
+    .generateAsync({
+      type: 'blob',
+      mimeType:
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    })
+    .then(blob => {
+      if (!filename) FileSaver.saveAs(blob, `${config.filename}.xlsx`);
+      else return blob;
+    });
 };
