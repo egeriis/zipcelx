@@ -37,7 +37,7 @@ export default (config) => {
         'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     })
     .then((blob) => {
-      if (!config.filename) {
+      if (config.filename) {
         return FileSaver.saveAs(blob, `${config.filename}.xlsx`);
       }
       return blob;
