@@ -30,11 +30,16 @@ export default (config) => {
   const worksheet = generateXMLWorksheet(config.sheet.data);
   xl.file('worksheets/sheet1.xml', worksheet);
 
-  return zip.generateAsync({
-    type: 'blob',
-    mimeType:
-      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-  }).then((blob) => {
-    FileSaver.saveAs(blob, `${config.filename}.xlsx`);
-  });
+  return zip
+    .generateAsync({
+      type: 'blob',
+      mimeType:
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    })
+    .then((blob) => {
+      if (config.filename) {
+        return FileSaver.saveAs(blob, `${config.filename}.xlsx`);
+      }
+      return blob;
+    });
 };

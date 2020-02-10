@@ -1,5 +1,4 @@
 import {
-  MISSING_KEY_FILENAME,
   INVALID_TYPE_FILENAME,
   INVALID_TYPE_SHEET,
   INVALID_TYPE_SHEET_DATA
@@ -10,12 +9,7 @@ const childValidator = (array) => {
 };
 
 export default (config) => {
-  if (!config.filename) {
-    console.error(MISSING_KEY_FILENAME);
-    return false;
-  }
-
-  if (typeof config.filename !== 'string') {
+  if (config.filename && typeof config.filename !== 'string') {
     console.error(INVALID_TYPE_FILENAME);
     return false;
   }
